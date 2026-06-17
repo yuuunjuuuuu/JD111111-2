@@ -27,7 +27,7 @@ if (motivationEl && countEl) {
   motivationEl.addEventListener('input', () => {
     const len = motivationEl.value.length;
     countEl.textContent = len;
-    countEl.style.color = len >= 100 ? '#16a34a' : '#dc2626';
+    countEl.style.color = len >= 10 ? '#16a34a' : '#dc2626';
   });
 }
 
@@ -83,8 +83,8 @@ function validateForm(data) {
 
   if (!data.motivation.trim()) {
     showError('motivationErr', '지원 동기를 입력해주세요.'); valid = false;
-  } else if (data.motivation.trim().length < 100) {
-    showError('motivationErr', `100자 이상 작성해주세요. (현재 ${data.motivation.trim().length}자)`); valid = false;
+  } else if (data.motivation.trim().length < 10) {
+    showError('motivationErr', `10자 이상 작성해주세요. (현재 ${data.motivation.trim().length}자)`); valid = false;
   }
 
   if (!data.privacy) {
