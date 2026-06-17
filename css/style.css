@@ -762,7 +762,37 @@ ul { list-style: none; }
   cursor: pointer;
   margin-top: 10px;
 }
-.checkbox-label input { accent-color: var(--primary); width: 15px; height: 15px; margin-top: 2px; flex-shrink: 0; }
+.checkbox-label input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--gray-4);
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  margin-top: 1px;
+  flex-shrink: 0;
+  position: relative;
+  transition: background .15s, border-color .15s;
+}
+.checkbox-label input[type="checkbox"]:checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.checkbox-label input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 11px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
 
 .privacy-box {
   background: var(--gray-6);

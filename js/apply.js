@@ -34,7 +34,10 @@ if (motivationEl && countEl) {
 // ===== 유효성 검사 =====
 function showError(id, msg) {
   const el = document.getElementById(id);
-  if (el) el.textContent = msg;
+  if (el) {
+    el.textContent = msg;
+    if (msg) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 }
 function clearErrors() {
   ['nameErr','ageErr','genderErr','phoneErr','emailErr','locationErr','experienceErr','motivationErr','privacyErr']
