@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>신청하기 | 데이터와 가까워지기</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">데이터와 가까워지기</a>
+      <nav>
+        <a href="index.html">홈</a>
+        <a href="curriculum.html">커리큘럼</a>
+        <a href="apply.html" class="btn-nav active-nav">신청하기</a>
+      </nav>
+      <button class="hamburger" id="hamburger">&#9776;</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">홈</a>
+      <a href="curriculum.html">커리큘럼</a>
+      <a href="apply.html">신청하기</a>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>프로그램 신청</h1>
+      <p>아래 신청서를 성실하게 작성해주세요. 신청자 전원에게 연락이 가는 것은 아니며, 검토 후 참여 가능한 분들께만 개별 연락드립니다.</p>
+    </div>
+  </section>
+
+  <section class="section apply-section">
+    <div class="container">
+      <div class="apply-layout">
+
+        <div class="form-wrap">
+          <form id="applyForm" novalidate>
+
+            <div class="form-section-title">기본 정보</div>
+
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label for="name">이름 <span class="required">*</span></label>
+                <input type="text" id="name" name="name" placeholder="홍길동" required />
+                <span class="error-msg" id="nameErr"></span>
+              </div>
+              <div class="form-group">
+                <label for="phone">연락처 <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required />
+                <span class="error-msg" id="phoneErr"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">이메일 <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="example@email.com" required />
+              <span class="error-msg" id="emailErr"></span>
+            </div>
+
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label for="age">나이 <span class="required">*</span></label>
+                <input type="number" id="age" name="age" placeholder="예) 22" min="1" max="99" required />
+                <span class="error-msg" id="ageErr"></span>
+              </div>
+              <div class="form-group">
+                <label>성별 <span class="required">*</span></label>
+                <div class="gender-group">
+                  <label class="gender-label">
+                    <input type="radio" name="gender" value="남성" required />
+                    <span>남성</span>
+                  </label>
+                  <label class="gender-label">
+                    <input type="radio" name="gender" value="여성" />
+                    <span>여성</span>
+                  </label>
+                </div>
+                <span class="error-msg" id="genderErr"></span>
+              </div>
+            </div>
+
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label for="school">학교 / 전공 / 학년</label>
+                <input type="text" id="school" name="school" placeholder="예) ○○대학교 경영학과 2학년" />
+              </div>
+              <div class="form-group">
+                <label for="location">거주지와 가까운 지하철역 <span class="required">*</span></label>
+                <input type="text" id="location" name="location" placeholder="예) 강남역, 서울대입구역" required />
+                <span class="error-msg" id="locationErr"></span>
+              </div>
+            </div>
+
+            <div class="form-section-title">사전 경험</div>
+
+            <div class="form-group">
+              <label>프로그래밍 / 데이터 경험 수준 <span class="required">*</span></label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="experience" value="none" required />
+                  <span>완전 초보 (경험 없음)</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="experience" value="beginner" />
+                  <span>엑셀 / 기초 통계 정도 사용 가능</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="experience" value="intermediate" />
+                  <span>파이썬 기초 문법은 알고 있음</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="experience" value="advanced" />
+                  <span>데이터분석 경험 있음</span>
+                </label>
+              </div>
+              <span class="error-msg" id="experienceErr"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="expDetail">사전 경험 상세 설명 (선택)</label>
+              <textarea id="expDetail" name="expDetail" rows="3" placeholder="이전에 배운 것, 사용해 본 도구 등 자유롭게 적어주세요."></textarea>
+            </div>
+
+            <div class="form-section-title">지원 동기</div>
+
+            <div class="form-group">
+              <label for="motivation">지원 동기 <span class="required">*</span></label>
+              <textarea id="motivation" name="motivation" rows="5" placeholder="이 프로그램에 지원하게 된 이유와 배우고 싶은 것을 자유롭게 적어주세요. (100자 이상)" required></textarea>
+              <div class="char-count"><span id="motivationCount">0</span> / 100자 이상</div>
+              <span class="error-msg" id="motivationErr"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="goal">프로그램 이후 목표 (선택)</label>
+              <textarea id="goal" name="goal" rows="3" placeholder="수료 후 어떤 것을 하고 싶은지 적어주세요."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>개인정보 수집 동의 <span class="required">*</span></label>
+              <div class="privacy-box">
+                <p><strong>수집 항목:</strong> 이름, 연락처, 이메일, 학교/소속, 거주지 인근 지하철역, 사전 경험, 지원 동기</p>
+                <p><strong>수집 목적:</strong> 프로그램 참가자 선발 및 운영</p>
+                <p><strong>보유 기간:</strong> 프로그램 종료 후</p>
+              </div>
+              <label class="checkbox-label">
+                <input type="checkbox" id="privacy" name="privacy" required />
+                <span>개인정보 수집 및 이용에 동의합니다.</span>
+              </label>
+              <span class="error-msg" id="privacyErr"></span>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <span id="submitText">신청서 제출하기</span>
+              <span id="submitLoading" style="display:none;">전송 중...</span>
+            </button>
+
+          </form>
+
+          <div class="success-msg" id="successMsg" style="display:none;">
+            <div class="success-check">&#10003;</div>
+            <h3>신청이 완료되었습니다</h3>
+            <p>작성해주신 이메일 <strong><span id="submittedEmail"></span></strong> 로<br />결과를 안내드리겠습니다.</p>
+            <p class="success-date">검토 후 개별 연락 드릴 예정입니다.</p>
+            <a href="index.html" class="btn-primary">홈으로 돌아가기</a>
+          </div>
+
+        </div>
+
+        <aside class="apply-aside">
+          <div class="aside-card">
+            <h4>모집 개요</h4>
+            <ul>
+              <li><strong>수업 방식</strong><br />1:1 맞춤 수업</li>
+              <li><strong>수업 장소</strong><br />서울대입구역 인근</li>
+            </ul>
+          </div>
+          <div class="aside-card">
+            <h4>이런 분께 추천해요</h4>
+            <ul>
+              <li>데이터분석이 처음인 분</li>
+              <li>파이썬을 배워보고 싶은 분</li>
+              <li>포트폴리오를 만들고 싶은 분</li>
+              <li>데이터 기반 커리어를 원하는 분</li>
+            </ul>
+          </div>
+          <div class="aside-card">
+            <h4>문의</h4>
+            <a href="https://open.kakao.com/o/sI4EhPzi" target="_blank" class="kakao-btn">카카오 오픈채팅으로 문의하기</a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 데이터와 가까워지기 &nbsp;·&nbsp; <a href="https://open.kakao.com/o/sI4EhPzi" target="_blank">카카오 오픈채팅으로 문의하기</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/apply.js"></script>
+</body>
+</html>

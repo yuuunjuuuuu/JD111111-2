@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>데이터와 가까워지기</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- 네비게이션 -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">데이터와 가까워지기</a>
+      <nav>
+        <a href="index.html" class="active">홈</a>
+        <a href="curriculum.html">커리큘럼</a>
+        <a href="apply.html" class="btn-nav">신청하기</a>
+      </nav>
+      <button class="hamburger" id="hamburger">&#9776;</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">홈</a>
+      <a href="curriculum.html">커리큘럼</a>
+      <a href="apply.html">신청하기</a>
+    </div>
+  </header>
+
+  <!-- 히어로 -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <h1>데이터로 세상을<br />읽는 첫 걸음</h1>
+      <p class="hero-sub">코딩을 몰라도 괜찮아요.<br />데이터분석이 처음인 분들을 위해 설계된 프로그램입니다.</p>
+      <div class="hero-cta">
+        <a href="apply.html" class="btn-primary">지금 신청하기</a>
+        <a href="curriculum.html" class="btn-outline">커리큘럼 보기</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">4주</span>
+          <span class="stat-label">집중 과정</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">1:1</span>
+          <span class="stat-label">맞춤 수업</span>
+        </div>
+      </div>
+      <div class="hero-keywords" aria-hidden="true">
+        <span>데이터 분석</span>
+        <span>시각화</span>
+        <span>Python</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 모집 대상 -->
+  <section class="section about">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">모집 대상</span>
+        <h2>이런 분들을 위한 프로그램이에요</h2>
+        <p class="section-desc">코딩 경험이 전혀 없어도 괜찮아요. 데이터에 관심 있다면 누구든 환영합니다.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-num">01</div>
+          <h3>완전 초보자 환영</h3>
+          <p>코딩이나 데이터 경험이 전혀 없어도 됩니다. 엑셀만 써봤어도, 아무것도 몰라도 괜찮아요.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">02</div>
+          <h3>데이터에 관심 있는 분</h3>
+          <p>막연하게 "데이터 분석 배워보고 싶다"는 생각만 있어도 충분해요. 관심이 시작점입니다.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">03</div>
+          <h3>만 20~25세 대학생</h3>
+          <p>데이터 분석을 통해 성장하고 싶은 대학생 여러분에게 실질적인 도움이 되고 싶습니다.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">04</div>
+          <h3>진로·취업 고민 중인 분</h3>
+          <p>데이터 분야로 방향을 잡고 싶거나, 포트폴리오가 필요한 분께 딱 맞는 과정입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 배우는 내용 -->
+  <section class="section skills-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">배우는 것들</span>
+        <h2>4주 동안 이런 것들을 배워요</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-item">파이썬 기초</div>
+        <div class="skill-item">데이터 시각화</div>
+        <div class="skill-item">판다스(Pandas)</div>
+        <div class="skill-item">통계 기초</div>
+        <div class="skill-item">머신러닝 입문</div>
+        <div class="skill-item">포트폴리오 제작</div>
+      </div>
+      <div class="text-center mt-40">
+        <a href="curriculum.html" class="btn-primary">전체 커리큘럼 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 강사 소개 -->
+  <section class="section mentor-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">강사 소개</span>
+        <h2>누가 가르치나요?</h2>
+      </div>
+      <div class="mentor-layout">
+        <div class="mentor-left">
+          <span class="mentor-badge">데이터 사이언스 전문가</span>
+          <h2 class="mentor-name">이윤주</h2>
+          <p class="mentor-quote">
+            "데이터 분석은 누구나 할 수 있습니다.<br />
+            중요한 것은 <strong>'어떤 데이터를 어떻게 볼 것인가'</strong>를<br />
+            아는 힘입니다.<br /><br />
+            실무에서 실제로 요구되는 데이터 분석 역량을<br />
+            체계적으로 전수해 드립니다."
+          </p>
+        </div>
+        <div class="mentor-right">
+          <div class="mentor-card">
+            <h4>강사 약력</h4>
+            <ul class="mentor-timeline">
+              <li>
+                <span class="mentor-dot"></span>
+                <div><strong>SKY 대학교 졸업</strong></div>
+              </li>
+              <li>
+                <span class="mentor-dot"></span>
+                <div>
+                  <strong>뉴욕대학교 (NYU) 석사 졸업</strong>
+                  <span>데이터 사이언스 전공</span>
+                </div>
+              </li>
+              <li>
+                <span class="mentor-dot"></span>
+                <div>
+                  <strong>前 대형 IT 기업</strong>
+                  <span>데이터 / 시스템 엔지니어</span>
+                </div>
+              </li>
+              <li>
+                <span class="mentor-dot"></span>
+                <div>
+                  <strong>現 대학 · 기업 출강</strong>
+                  <span>데이터 분석 강사</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">자주 묻는 질문</span>
+        <h2>궁금한 점이 있으신가요?</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">코딩을 전혀 모르는데 참여할 수 있나요?</button>
+          <div class="faq-a">
+            <p>네, 전혀 문제없습니다. 이 프로그램은 처음부터 차근차근 알려드리기 위해 만들었습니다. 파이썬 설치부터 함께 시작합니다.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">노트북(컴퓨터)이 꼭 있어야 하나요?</button>
+          <div class="faq-a">
+            <p>네, 반드시 개인 노트북이 필요합니다. 수업이 실습 위주로 진행되기 때문에 본인 노트북 지참은 필수입니다.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">참가비가 있나요?</button>
+          <div class="faq-a">
+            <p>현재 프로그램 정식 상품화 이전 점검 단계로 운영되는 과정입니다. <strong>무료</strong>로 진행됩니다.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">온라인인가요, 오프라인인가요?</button>
+          <div class="faq-a">
+            <p>서울대입구역 인근에서 오프라인으로 진행됩니다. 1:1 맞춤 수업이라 시간과 장소는 협의 후 조율됩니다.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">1:1 수업은 어떻게 진행되나요?</button>
+          <div class="faq-a">
+            <p>강사와 수강생이 1:1로 진행하는 맞춤 수업입니다. 개인의 학습 속도와 이해 수준에 맞게 커리큘럼을 조정하며 진행합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 신청 CTA -->
+  <section class="section cta-section">
+    <div class="container text-center">
+      <h2>지금 바로 신청하세요</h2>
+      <a href="apply.html" class="btn-primary btn-large">신청서 작성하기</a>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 데이터와 가까워지기 &nbsp;·&nbsp; <a href="https://open.kakao.com/o/sI4EhPzi" target="_blank">카카오 오픈채팅으로 문의하기</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

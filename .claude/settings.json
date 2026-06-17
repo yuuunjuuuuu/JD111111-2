@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(python -m http.server --version)",
+      "Bash(python -m http.server 8787)",
+      "Bash(where chromium *)",
+      "Bash(where chromium-browser *)",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless=new --screenshot=c:/JD1/screenshot_index.png --window-size=1280,900 http://localhost:8787/index.html)",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless '--screenshot=C:\\\\JD1\\\\screenshot_index.png' --window-size=1280,900 --no-sandbox --disable-gpu http://localhost:8787/index.html)",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless '--screenshot=C:\\\\JD1\\\\screenshot_curriculum.png' --window-size=1280,900 --no-sandbox --disable-gpu http://localhost:8787/curriculum.html)",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless '--screenshot=C:\\\\JD1\\\\screenshot_apply.png' --window-size=1280,900 --no-sandbox --disable-gpu http://localhost:8787/apply.html)",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless '--screenshot=C:\\\\JD1\\\\shot_mentor.png' --window-size=1280,900 --no-sandbox --disable-gpu http://localhost:8787/index.html)",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless '--screenshot=C:\\\\JD1\\\\shot_mentor2.png' --window-size=1280,900 --no-sandbox --disable-gpu --virtual-time-budget=5000 'http://localhost:8788/index.html#mentor')",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless '--screenshot=C:\\\\JD1\\\\shot_full.png' --window-size=1280,5000 --no-sandbox --disable-gpu http://localhost:8788/index.html)",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless=new '--screenshot=C:\\\\JD1\\\\shot_mentor3.png' --window-size=1280,900 --no-sandbox --disable-gpu http://localhost:8788/index.html)",
+      "Bash(python -c \"import playwright; print\\('ok'\\)\")",
+      "Bash(python -c \"from selenium import webdriver; print\\('ok'\\)\")",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless=new '--screenshot=C:\\\\JD1\\\\shot_mentor_only.png' --window-size=1280,700 --no-sandbox --disable-gpu http://localhost:8788/mentor_preview.html)",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless '--screenshot=C:\\\\JD1\\\\shot_mentor_only.png' --window-size=1280,700 http://localhost:8788/mentor_preview.html)",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless '--screenshot=C:\\\\JD1\\\\shot_about.png' --window-size=1280,900 http://localhost:8788/index.html)",
+      "Bash('C:/Program Files \\(x86\\)/Google/Chrome/Application/chrome.exe' --headless '--screenshot=C:\\\\JD1\\\\shot_about.png' --window-size=1280,700 http://localhost:8788/about_preview.html)",
+      "Bash(pkill -f \"http.server 878\")",
+      "Bash(python -m http.server 8789)",
+      "Bash(pip install *)",
+      "Bash(python -m playwright install chromium)",
+      "Bash(npm --version)",
+      "Bash(npx --yes localtunnel --port 8789)",
+      "Bash(jobs)",
+      "PowerShell(Start-Process \"c:\\\\JD1\\\\index.html\")",
+      "Bash(python c:/JD1/pw_shot.py)",
+      "PowerShell(Start-Process \"c:\\\\JD1\\\\apply.html\")",
+      "Bash(git --version)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)"
+    ]
+  }
+}
