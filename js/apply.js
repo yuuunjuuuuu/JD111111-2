@@ -19,6 +19,119 @@ document.querySelectorAll('.gender-label').forEach(label => {
   });
 });
 
+// ===== 참여 가능 시간 그리드 (요일 x 1시간 단위) =====
+const SCHEDULE_DAYS = ['월', '화', '수', '목', '금', '토', '일'];
+const scheduleSelected = new Set(); // "요일-시" 예: "월-9"
+const scheduleGridEl = document.getElementById('scheduleGrid');
+
+function buildScheduleGrid() {
+  if (!scheduleGridEl) return;
+
+  const corner = document.createElement('div');
+  corner.className = 'sg-corner';
+  scheduleGridEl.appendChild(corner);
+
+  SCHEDULE_DAYS.forEach(day => {
+    const head = document.createElement('div');
+    head.className = 'sg-day-head';
+    head.textContent = day;
+    scheduleGridEl.appendChild(head);
+  });
+
+  for (let hour = 0; hour < 24; hour++) {
+    const label = document.createElement('div');
+    label.className = 'sg-hour-label';
+    label.textContent = String(hour).padStart(2, '0');
+    scheduleGridEl.appendChild(label);
+
+    SCHEDULE_DAYS.forEach(day => {
+      const cell = document.createElement('div');
+      cell.className = 'sg-cell';
+      cell.dataset.day = day;
+      cell.dataset.hour = String(hour);
+      scheduleGridEl.appendChild(cell);
+    });
+  }
+}
+buildScheduleGrid();
+
+let scheduleDragging = false;
+let schedulePaintValue = true;
+
+function toggleScheduleCell(cell, value) {
+  const key = `${cell.dataset.day}-${cell.dataset.hour}`;
+  cell.classList.toggle('selected', value);
+  if (value) scheduleSelected.add(key);
+  else scheduleSelected.delete(key);
+}
+
+if (scheduleGridEl) {
+  scheduleGridEl.addEventListener('mousedown', (e) => {
+    const cell = e.target.closest('.sg-cell');
+    if (!cell) return;
+    e.preventDefault();
+    scheduleDragging = true;
+    schedulePaintValue = !cell.classList.contains('selected');
+    toggleScheduleCell(cell, schedulePaintValue);
+  });
+  scheduleGridEl.addEventListener('mouseover', (e) => {
+    if (!scheduleDragging) return;
+    const cell = e.target.closest('.sg-cell');
+    if (!cell) return;
+    toggleScheduleCell(cell, schedulePaintValue);
+  });
+  scheduleGridEl.addEventListener('touchstart', (e) => {
+    const cell = e.target.closest('.sg-cell');
+    if (!cell) return;
+    scheduleDragging = true;
+    schedulePaintValue = !cell.classList.contains('selected');
+    toggleScheduleCell(cell, schedulePaintValue);
+  }, { passive: true });
+  scheduleGridEl.addEventListener('touchmove', (e) => {
+    if (!scheduleDragging) return;
+    const touch = e.touches[0];
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    const cell = el && el.closest('.sg-cell');
+    if (!cell) return;
+    e.preventDefault();
+    toggleScheduleCell(cell, schedulePaintValue);
+  }, { passive: false });
+}
+document.addEventListener('mouseup', () => { scheduleDragging = false; });
+document.addEventListener('touchend', () => { scheduleDragging = false; });
+
+const scheduleClearBtn = document.getElementById('scheduleClearBtn');
+if (scheduleClearBtn) {
+  scheduleClearBtn.addEventListener('click', () => {
+    scheduleSelected.clear();
+    scheduleGridEl.querySelectorAll('.sg-cell.selected').forEach(cell => cell.classList.remove('selected'));
+  });
+}
+
+function formatScheduleSummary() {
+  return SCHEDULE_DAYS
+    .map(day => {
+      const hours = [...scheduleSelected]
+        .filter(key => key.startsWith(`${day}-`))
+        .map(key => Number(key.split('-')[1]))
+        .sort((a, b) => a - b);
+      if (!hours.length) return null;
+
+      const ranges = [];
+      let start = hours[0];
+      let prev = hours[0];
+      for (let i = 1; i <= hours.length; i++) {
+        const h = hours[i];
+        if (h === prev + 1) { prev = h; continue; }
+        ranges.push(`${String(start).padStart(2, '0')}~${String(prev + 1).padStart(2, '0')}시`);
+        start = h; prev = h;
+      }
+      return `${day} ${ranges.join(', ')}`;
+    })
+    .filter(Boolean)
+    .join(' / ');
+}
+
 // ===== 글자수 카운터 =====
 const motivationEl = document.getElementById('motivation');
 const countEl      = document.getElementById('motivationCount');
@@ -40,7 +153,7 @@ function showError(id, msg) {
   }
 }
 function clearErrors() {
-  ['nameErr','ageErr','genderErr','phoneErr','emailErr','locationErr','experienceErr','motivationErr','privacyErr']
+  ['nameErr','ageErr','genderErr','phoneErr','emailErr','locationErr','scheduleErr','experienceErr','motivationErr','privacyErr']
     .forEach(id => showError(id, ''));
 }
 
@@ -75,6 +188,10 @@ function validateForm(data) {
 
   if (!data.location.trim()) {
     showError('locationErr', '가까운 지하철역을 입력해주세요.'); valid = false;
+  }
+
+  if (!data.scheduleSummary) {
+    showError('scheduleErr', '참여 가능한 시간을 1칸 이상 선택해주세요.'); valid = false;
   }
 
   if (!data.experience) {
@@ -119,6 +236,9 @@ if (form) {
 
     const genderRadio = document.querySelector('input[name="gender"]:checked');
 
+    const scheduleSummary = formatScheduleSummary();
+    document.getElementById('scheduleSummary').value = scheduleSummary;
+
     const data = {
       name:       document.getElementById('name').value,
       age:        document.getElementById('age').value,
@@ -127,6 +247,7 @@ if (form) {
       email:      document.getElementById('email').value,
       school:     document.getElementById('school').value || '미입력',
       location:   document.getElementById('location').value,
+      scheduleSummary: scheduleSummary,
       experience: experienceRadio ? experienceRadio.value : '',
       expDetail:  document.getElementById('expDetail').value || '없음',
       motivation: document.getElementById('motivation').value,
@@ -150,6 +271,7 @@ if (form) {
       from_email: data.email,
       school:     data.school,
       location:   data.location,
+      available_time: data.scheduleSummary,
       experience: experienceLabels[data.experience] || data.experience,
       exp_detail: data.expDetail,
       motivation: data.motivation,

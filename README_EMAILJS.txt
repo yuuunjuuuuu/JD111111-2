@@ -39,6 +39,7 @@ STEP 3. Email Template 만들기
   이메일:   {{from_email}}
   학교/소속: {{school}}
   거주지역: {{location}}
+  참여가능시간: {{available_time}}
   경험수준: {{experience}}
   경험상세: {{exp_detail}}
 

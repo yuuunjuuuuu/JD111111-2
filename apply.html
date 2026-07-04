@@ -98,6 +98,19 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <label>참여 가능 시간 <span class="required">*</span></label>
+              <p class="field-hint">가능한 요일과 시간을 클릭(드래그)해서 칠해주세요. 1시간 단위로 선택할 수 있어요.</p>
+              <div class="schedule-wrap">
+                <div class="schedule-grid" id="scheduleGrid"></div>
+              </div>
+              <div class="schedule-actions">
+                <button type="button" class="btn-schedule-clear" id="scheduleClearBtn">전체 지우기</button>
+              </div>
+              <input type="hidden" id="scheduleSummary" name="scheduleSummary" />
+              <span class="error-msg" id="scheduleErr"></span>
+            </div>
+
             <div class="form-section-title">사전 경험</div>
 
             <div class="form-group">
@@ -145,7 +158,7 @@
             <div class="form-group">
               <label>개인정보 수집 동의 <span class="required">*</span></label>
               <div class="privacy-box">
-                <p><strong>수집 항목:</strong> 이름, 연락처, 이메일, 학교/소속, 거주지 인근 지하철역, 사전 경험, 지원 동기</p>
+                <p><strong>수집 항목:</strong> 이름, 연락처, 이메일, 학교/소속, 거주지 인근 지하철역, 참여 가능 시간, 사전 경험, 지원 동기</p>
                 <p><strong>수집 목적:</strong> 프로그램 참가자 선발 및 운영</p>
                 <p><strong>보유 기간:</strong> 프로그램 종료 후</p>
               </div>
